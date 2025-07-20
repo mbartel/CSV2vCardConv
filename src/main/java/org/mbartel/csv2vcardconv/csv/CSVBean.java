@@ -10,29 +10,39 @@ import java.util.Date;
 public interface CSVBean {
 
     /**
-     * @return the summary or subject of the event
+     * @return the display name
      */
-    String getSummary();
+    String getDisplayName();
 
     /**
-     * @return the creation date and time of the event
+     * @return the given name
      */
-    Date getCreationDate();
+    String getGivenName();
 
     /**
-     * @return the description or comment of the event
+     * @return the surname / family name
      */
-    String getDescription();
+    String getSurname();
 
     /**
-     * @return the start date and time of the event
+     * @return the title
      */
-    Date getStartDate();
+    String getTitle();
 
     /**
-     * @return the end date and time of the event
+     * @return the company name
      */
-    Date getEndDate();
+    String getCompanyName();
+
+    /**
+     * @return the mobile phone number
+     */
+    String getMobileNumber();
+    
+    /**
+     * @return the first email address 
+     */
+    String getEmailAddress1();
     
     /**
      * @return true, if the all properties of the event are empty (means equal to NULL)

@@ -44,8 +44,12 @@ public class CSV2vCardConv {
 
         try {
             Ezvcard.write(CSVParser.parse(reader, XstReaderBean.class).stream().map(csvBean -> new VCard(
-                    csvBean.getSummary(),
-                    csvBean.getDescription()
+                    csvBean.getGivenName(),
+                    csvBean.getSurname(),
+                    csvBean.getDisplayName(),
+                    csvBean.getCompanyName(),
+                    csvBean.getMobileNumber(),
+                    csvBean.getEmailAddress1()
             )).collect(Collectors.toList())).version(VCardVersion.V4_0).go(Paths.get(outputfile));
         } catch (final IOException ex) {
             System.out.println("Error writing to outputfile " + outputfile);

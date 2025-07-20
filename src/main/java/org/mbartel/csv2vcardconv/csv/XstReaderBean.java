@@ -1,8 +1,6 @@
 package org.mbartel.csv2vcardconv.csv;
 
 import com.opencsv.bean.CsvBindByName;
-import com.opencsv.bean.CsvDate;
-import java.util.Date;
 
 /**
  * CSV bean for XstReader (https://github.com/Dijji/XstReader)
@@ -14,64 +12,81 @@ public class XstReaderBean implements CSVBean {
     // CSV date pattern for 31.10.2016 23:00:00
     private final static String DATE_PATTERN = "dd.MM.yyyy HH:mm:ss";
 
-    @CsvBindByName(column = "Subject")
-    private String summary;
+    @CsvBindByName(column = "DisplayName")
+    private String displayName;
 
-    @CsvBindByName(column = "CreationTime")
-    @CsvDate(value = DATE_PATTERN)
-    private Date creationDate;
+    @CsvBindByName(column = "GivenName")
+    private String givenName;
 
-    @CsvBindByName(column = "UserEntryId")
-    private String description;
+    @CsvBindByName(column = "Surname")
+    private String surname;
 
-    @CsvBindByName(column = "PSETID_Appointment: AppointmentStartWhole")
-    @CsvDate(value = DATE_PATTERN)
-    private Date startDate;
+    @CsvBindByName(column = "Title")
+    private String title;
 
-    @CsvBindByName(column = "PSETID_Appointment: AppointmentEndWhole")
-    @CsvDate(value = DATE_PATTERN)
-    private Date endDate;
+    @CsvBindByName(column = "CompanyName")
+    private String companyName;
+
+    @CsvBindByName(column = "MobileTelephoneNumber")
+    private String mobileNumber;
+
+    @CsvBindByName(column = "PSETID_Address: Email1EmailAddress")
+    private String emailAddress1;
 
     @Override
-    public String getSummary() {
-        return summary;
+    public String getDisplayName() {
+        return displayName;
     }
 
     @Override
-    public Date getCreationDate() {
-        return creationDate;
+    public String getGivenName() {
+        return givenName;
     }
 
     @Override
-    public String getDescription() {
-        return description;
+    public String getSurname() {
+        return surname;
     }
 
     @Override
-    public Date getStartDate() {
-        return startDate;
+    public String getTitle() {
+        return title;
     }
 
     @Override
-    public Date getEndDate() {
-        return endDate;
+    public String getCompanyName() {
+        return companyName;
     }
 
+    @Override
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    @Override
+    public String getEmailAddress1() {
+        return emailAddress1;
+    }
+    
     @Override
     public boolean isNotEmpty() {
-        return summary != null
-                || description != null
-                || creationDate != null
-                || startDate != null
-                || endDate != null;
+        return displayName != null
+                || surname != null
+                || givenName != null
+                || title != null
+                || companyName != null
+                || mobileNumber != null
+                || emailAddress1 != null;
     }
 
     @Override
     public String toString() {
-        return "creationDate: " + creationDate
-                + ", startDate: " + startDate
-                + ", endDate: " + endDate
-                + ", summary: " + summary
-                + ", description: " + description;
+        return "displayName: " + displayName
+                + ", surname: " + surname
+                + ", givenName: " + givenName
+                + ", title: " + title
+                + ", companyName: " + companyName
+                + ", mobileTelephoneNumber:" + mobileNumber
+                + ", emailAddress1:" + emailAddress1;
     }
 }
